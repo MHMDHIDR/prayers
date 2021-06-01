@@ -26,6 +26,13 @@
       * {
         font-family: "Amiri", serif;
       }
+      .bg-img {
+        background-image: url(http://dev.com:5500/assets/icons/mosque.svg);
+        background-blend-mode: overlay;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
       .loading {
         --size: 10rem;
         width: var(--size);
@@ -53,9 +60,10 @@
         text-center
         bg-green-300
         m-auto
+        bg-img
       "
     >
-      <header>
+      <header class="hidden">
         <h1 class="text-3xl font-bold my-10">أوقات الصلاة في دولة قطر</h1>
         <p>
           تطبيق لعرض أوقات الصلاة في دولة قطر يعرض الأوقات بناءً على الــAPI
@@ -71,14 +79,14 @@
           </a>
         </strong>
       </header>
-      <main>
+      <main class="w-10/12 m-auto bg-gray-500 bg-opacity-50 p-10 rounded-2xl">
         <!-- here view prayers times -->
         <h3 class="text-3xl mb-10 font-bold">
           <span>أوقات الصلاة ليوم</span>
           <span id="today"></span>
         </h3>
         <div class="loading hidden"></div>
-        <ul class="times__list text-2xl">
+        <ul class="times__list text-2xl font-bold">
           <li class="flex justify-evenly mb-7">
             <lable for="prayer1">صلاة الصبح: </lable>
             <span id="prayer1"></span>
@@ -95,7 +103,7 @@
             <lable for="prayer4">صلاة المغرب: </lable>
             <span id="prayer4"></span>
           </li>
-          <li class="flex justify-evenly mb-7">
+          <li class="flex justify-evenly">
             <lable for="prayer5">صلاة العشا: </lable>
             <span id="prayer5"></span>
           </li>
