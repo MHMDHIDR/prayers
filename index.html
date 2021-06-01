@@ -4,12 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="App for viewing and showing Prayers Times in Qatar"
+    />
+    <meta name="theme-color" content="#6ee7b7" />
     <title>Prayers</title>
     <link
       rel="shortcut icon"
       href="./assets/icons/mosque.svg"
       type="image/x-icon"
     />
+    <link rel="apple-touch-icon" href="./assets/icons/mosque.png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap"
@@ -26,6 +32,10 @@
       * {
         font-family: "Amiri", serif;
       }
+      :root {
+        --primary-clr: #6ee7b7;
+        --light-clr: #f3f3f3;
+      }
       .bg-img {
         background-image: url("./assets/icons/mosque.png");
         background-blend-mode: overlay;
@@ -37,8 +47,8 @@
         --size: 10rem;
         width: var(--size);
         height: var(--size);
-        border: calc(var(--size) / 10) solid #f3f3f3;
-        border-top: calc(var(--size) / 10) solid #098855;
+        border: calc(var(--size) / 10) solid var(--light-clr);
+        border-top: calc(var(--size) / 10) solid var(--primary-clr);
         border-radius: 50%;
         margin: auto;
         animation: spin 1s infinite linear;
@@ -73,6 +83,7 @@
           <a
             class="text-xl"
             href="https://aladhan.com/prayer-times-api#GetCalendarByCitys"
+            rel="noreferrer"
             target="_blank"
           >
             https://aladhan.com/prayer-times-api#GetCalendarByCitys
@@ -111,6 +122,16 @@
         <!-- here view prayers times -->
       </main>
     </section>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () =>
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then((reg) => console.log("Registered :D", reg))
+            .catch((err) => console.error("NOT Registered", err))
+        );
+      }
+    </script>
     <script src="./assets/js/app.js"></script>
   </body>
 </html>
