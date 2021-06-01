@@ -1,0 +1,16 @@
+{
+  "name": "Prayers Times",
+  "short_name": "Prayers Times",
+  "icons": [
+    {
+      "src": "./assets/icons/mosque.png",
+      "size": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#6ee7b7",
+  "theme_color": "#6ee7b7"
+}

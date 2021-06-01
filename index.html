@@ -10,12 +10,14 @@
     />
     <meta name="theme-color" content="#6ee7b7" />
     <title>Prayers</title>
+    >
+    <link rel="apple-touch-icon" href="./assets/icons/mosque.png" />
     <link
       rel="shortcut icon"
       href="./assets/icons/mosque.svg"
       type="image/x-icon"
     />
-    <link rel="apple-touch-icon" href="./assets/icons/mosque.png" />
+    <link rel="manifest" href="./manifest.json" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap"
@@ -128,7 +130,7 @@
           navigator.serviceWorker
             .register("./sw.js")
             .then((reg) => console.log("Registered :D", reg))
-            .catch((err) => console.error("NOT Registered", err))
+            .catch((err) => console.log("NOT Registered", err))
         );
       }
     </script>
