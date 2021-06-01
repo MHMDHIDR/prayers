@@ -13,7 +13,7 @@ const daysInArabic = [
   "الجمعة",
   "السبت",
 ];
-const url = `http://api.aladhan.com/v1/calendarByCity?city=Doha&country=Qatar&method=10&month=${month}&year=${year}`;
+const url = `https://api.aladhan.com/v1/calendarByCity?city=Doha&country=Qatar&method=10&month=${month}&year=${year}`;
 
 const today = document.querySelector("#today");
 const prayer1 = document.querySelector("#prayer1");
