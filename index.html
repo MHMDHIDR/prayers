@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prayers</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/icons/mosque.svg"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css"
+      integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      * {
+        font-family: "Amiri", serif;
+      }
+      .loading {
+        --size: 10rem;
+        width: var(--size);
+        height: var(--size);
+        border: calc(var(--size) / 10) solid #f3f3f3;
+        border-top: calc(var(--size) / 10) solid #098855;
+        border-radius: 50%;
+        margin: auto;
+        animation: spin 1s infinite linear;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section
+      class="
+        flex flex-col
+        align-center
+        justify-around
+        h-screen
+        text-center
+        bg-green-300
+        m-auto
+      "
+    >
+      <header>
+        <h1 class="text-3xl font-bold my-10">أوقات الصلاة في دولة قطر</h1>
+        <p>
+          تطبيق لعرض أوقات الصلاة في دولة قطر يعرض الأوقات بناءً على الــAPI
+          التالي:
+        </p>
+        <strong>
+          <a
+            class="text-xl"
+            href="https://aladhan.com/prayer-times-api#GetCalendarByCitys"
+            target="_blank"
+          >
+            https://aladhan.com/prayer-times-api#GetCalendarByCitys
+          </a>
+        </strong>
+      </header>
+      <main>
+        <!-- here view prayers times -->
+        <h3 class="text-3xl mb-10 font-bold">
+          <span>أوقات الصلاة ليوم</span>
+          <span id="today"></span>
+        </h3>
+        <div class="loading hidden"></div>
+        <ul class="times__list text-2xl">
+          <li class="flex justify-evenly mb-7">
+            <lable for="prayer1">صلاة الصبح: </lable>
+            <span id="prayer1"></span>
+          </li>
+          <li class="flex justify-evenly mb-7">
+            <lable for="prayer2">صلاة الظهر: </lable>
+            <span id="prayer2"></span>
+          </li>
+          <li class="flex justify-evenly mb-7">
+            <lable for="prayer3">صلاة العصر: </lable>
+            <span id="prayer3"></span>
+          </li>
+          <li class="flex justify-evenly mb-7">
+            <lable for="prayer4">صلاة المغرب: </lable>
+            <span id="prayer4"></span>
+          </li>
+          <li class="flex justify-evenly mb-7">
+            <lable for="prayer5">صلاة العشا: </lable>
+            <span id="prayer5"></span>
+          </li>
+        </ul>
+        <!-- here view prayers times -->
+      </main>
+    </section>
+    <script src="./assets/js/app.js"></script>
+  </body>
+</html>
