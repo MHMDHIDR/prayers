@@ -128,8 +128,8 @@
         window.addEventListener("load", () =>
           navigator.serviceWorker
             .register("./sw.js")
-            .then((reg) => console.log("Registered :D", reg))
-            .catch((err) => console.log("NOT Registered", err))
+            .then((reg) => reg)
+            .catch((err) => err)
         );
       }
     </script>
