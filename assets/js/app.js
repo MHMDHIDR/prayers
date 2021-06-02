@@ -31,7 +31,6 @@ daysInArabic.forEach((day, index) => {
 });
 
 const getPrayerTimes = async () => {
-  loading.classList.remove("hidden");
   timesList.classList.add("hidden");
 
   let response = await fetch(url);
@@ -41,7 +40,7 @@ const getPrayerTimes = async () => {
 
 getPrayerTimes()
   .then((data) => {
-    loading.classList.add("hidden");
+    loading.remove();
     timesList.classList.remove("hidden");
 
     const dateTimes = data.data[dayOfWeek - 1];
