@@ -1,23 +1,8 @@
-const cacheName = "cache-v1";
-const resourcesToPrecache = [
-  "/",
-  "index.html",
-  "assets/icons/mosque.png",
-  "assets/icons/mosque.svg",
-  "assets/js/app.js",
-];
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox-sw.js"
+);
 
-self.addEventListener("install", (e) => {
-  console.log("Install event");
-  e.waitUntil(
-    caches.open(cacheName).then((cache) => cache.addAll(resourcesToPrecache))
-  );
-});
-
-self.addEventListener("fetch", (e) => {
-  e.respondWith(caches.match(e.request)).then(
-    (cachedResponse) => cachedResponse || fetch(e.request)
-  );
-});
-
-self.addEventListener("activate", (e) => console.log("Activate event"));
+workbox.routing.registerRoute(
+  ({ request }) => request.destination === "image",
+  new workbox.strategies.CacheFirst()
+);
