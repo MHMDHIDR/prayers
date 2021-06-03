@@ -55,3 +55,32 @@ getPrayerTimes()
   .catch((err) => {
     timesList.textContent = `there is an error! : ${err}`;
   });
+
+let deferredPrompt;
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  listenToUserAction();
+});
+
+const installBtn = document.querySelector(".install__btn"),
+  listenToUserAction = () => {
+    installBtn.classList.remove("hidden");
+
+    installBtn.addEventListener("click", () => presentAddToHome());
+  },
+  presentAddToHome = () => {
+    deferredPrompt
+      .prompt()
+      .then((res) => {
+        if (res.outcome === "accepted") {
+          console.log(res.outcome);
+        } else {
+          deferredPrompt = null;
+        }
+      })
+      .catch((haha) => {
+        deferredPrompt = null;
+        console.log(haha);
+      });
+  };
