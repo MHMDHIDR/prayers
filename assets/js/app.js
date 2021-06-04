@@ -4,14 +4,14 @@ const year = date.getFullYear();
 const month = date.getMonth() + 1;
 const dayOfWeek = date.getDay();
 const todayDate = date.getDate();
-const daysInArabic = [
+const daysNameInArabic = [
   "الأحد",
   "الإثنين",
   "الثلاثاء",
   "الأربعاء",
   "الخميس",
   "الجمعة",
-  "السبت",
+  "السبت"
 ];
 const url = `https://api.aladhan.com/v1/calendarByCity?city=Doha&country=Qatar&method=10&month=${month}&year=${year}`;
 
@@ -23,10 +23,18 @@ const prayer4 = document.querySelector("#prayer4");
 const prayer5 = document.querySelector("#prayer5");
 const loading = document.querySelector(".loading");
 const timesList = document.querySelector(".times__list");
+const DATE_SEPARATOR = "/";
 
-daysInArabic.forEach((day, index) => {
+daysNameInArabic.forEach((dayName, index) => {
   if (dayOfWeek === index) {
-    today.textContent = `${day} - ${year}/${month}/${todayDate}`;
+    today.textContent = `
+      ${dayName} - 
+      ${todayDate > 9 ? todayDate : "0" + todayDate}
+      ${DATE_SEPARATOR}
+      ${month > 9 ? month : "0" + month}
+      ${DATE_SEPARATOR}
+      ${year}
+    `;
   }
 });
 
@@ -46,11 +54,21 @@ getPrayerTimes()
     const dateTimes = data.data[dayOfWeek - 1];
     const prayerTimes = dateTimes.timings;
 
-    prayer1.textContent = prayerTimes.Fajr.split(" ")[0];
-    prayer2.textContent = prayerTimes.Dhuhr.split(" ")[0];
-    prayer3.textContent = prayerTimes.Asr.split(" ")[0];
-    prayer4.textContent = prayerTimes.Maghrib.split(" ")[0];
-    prayer5.textContent = prayerTimes.Isha.split(" ")[0];
+    const timeIn12HrsSystem = (prayerName) => {
+      const hours = prayerName.split(":")[0] % 12;
+      const mins = prayerName.split(":")[1].split(" ")[0];
+      return `${hours > 9 ? hours : "0" + hours}:${mins}`;
+    };
+
+    const timeIn24HrsSystem = (prayerName) => {
+      return prayerName.split(" ")[0];
+    };
+
+    prayer1.textContent = timeIn12HrsSystem(prayerTimes.Fajr);
+    prayer2.textContent = timeIn12HrsSystem(prayerTimes.Dhuhr);
+    prayer3.textContent = timeIn12HrsSystem(prayerTimes.Asr);
+    prayer4.textContent = timeIn12HrsSystem(prayerTimes.Maghrib);
+    prayer5.textContent = timeIn12HrsSystem(prayerTimes.Isha);
   })
   .catch((err) => {
     timesList.textContent = `there is an error! : ${err}`;
