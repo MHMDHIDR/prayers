@@ -27,8 +27,9 @@ const DATE_SEPARATOR = "/";
 
 daysNameInArabic.forEach((dayName, index) => {
   if (dayOfWeek === index) {
-    today.textContent = `
-      ${dayName} - 
+    today.innerHTML = `
+      ${dayName}
+      <br>
       ${todayDate > 9 ? todayDate : "0" + todayDate}
       ${DATE_SEPARATOR}
       ${month > 9 ? month : "0" + month}
