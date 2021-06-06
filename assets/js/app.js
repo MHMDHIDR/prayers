@@ -2,7 +2,7 @@
 const date = new Date();
 const year = date.getFullYear();
 const month = date.getMonth() + 1;
-const dayOfWeek = date.getDay();
+const dayOfWeek = date.getDay(); //returns from 0 to 6
 const todayDate = date.getDate();
 const daysNameInArabic = [
   "الأحد",
@@ -52,7 +52,7 @@ getPrayerTimes()
     loading.remove();
     timesList.classList.remove("hidden");
 
-    const dateTimes = data.data[dayOfWeek - 1];
+    const dateTimes = data.data[todayDate - 1];
     const prayerTimes = dateTimes.timings;
 
     const timeIn12HrsSystem = (prayerName) => {
