@@ -1,0 +1,28 @@
+{
+  "name": "prayers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sw.js",
+  "scripts": {
+    "build": "postcss assets/css/styles.css -o assets/css/app.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MHMDHIDR/prayers.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MHMDHIDR/prayers/issues"
+  },
+  "homepage": "https://github.com/MHMDHIDR/prayers#readme",
+  "dependencies": {
+    "autoprefixer": "^10.3.3",
+    "postcss": "^8.3.6",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.2.9",
+    "watch": "^1.0.2"
+  },
+  "devDependencies": {}
+}

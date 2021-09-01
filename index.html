@@ -30,11 +30,7 @@
 
     <title>Prayers</title>
 
-    <link
-      rel="shortcut icon"
-      href="./assets/icons/mosque.svg"
-      type="image/x-icon"
-    />
+    <link rel="shortcut icon" href="./assets/icons/mosque.svg" type="image/x-icon" />
 
     <!-- Icons start -->
     <link rel="apple-touch-icon" href="./assets/icons/apple-icon-180.png" />
@@ -173,18 +169,30 @@
 
     <link rel="manifest" href="./manifest.json" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.1.2/tailwind.min.css"
       integrity="sha512-RntatPOhEcQEA81gC/esYoCkGkL7AYV7TeTPoU+R9zE44/yWxVvLIBfBSaMu78rhoDd73ZeRHXRJN5+aPEK53Q=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-    />
+    /> -->
     <link rel="stylesheet" href="./assets/css/app.css" />
+    <style>
+      @font-face {
+        font-family: 'Amiri-Bold';
+        src: url('./assets/fonts/Amiri/Amiri-Bold.ttf');
+        font-weight: 700;
+      }
+      @font-face {
+        font-family: 'Amiri-Reg';
+        src: url('./assets/fonts/Amiri/Amiri-Regular.ttf');
+        font-weight: 400;
+      }
+
+      * {
+        font-family: 'Amiri-Reg', 'Amiri-Bold', 'Tahoma', sans-serif, serif;
+      }
+    </style>
   </head>
   <body>
     <section
@@ -196,15 +204,13 @@
         text-center
         bg-green-300
         m-auto
-        bg-img
+        bg-blend-overlay bg-no-repeat bg-center bg-contain
       "
+      style="background-image: url('assets/icons/mosque.svg')"
     >
       <header class="hidden">
         <h1 class="text-3xl font-bold my-10">أوقات الصلاة في دولة قطر</h1>
-        <p>
-          تطبيق لعرض أوقات الصلاة في دولة قطر يعرض الأوقات بناءً على الــAPI
-          التالي:
-        </p>
+        <p>تطبيق لعرض أوقات الصلاة في دولة قطر يعرض الأوقات بناءً على الــAPI التالي:</p>
         <strong>
           <a
             class="text-xl"
@@ -222,7 +228,28 @@
           <span>أوقات الصلاة ليوم</span>
           <span id="today"></span>
         </h3>
-        <div class="loading"></div>
+        <!-- Loading START -->
+        <svg
+          class="loading animate-spin h-40 w-40 text-white m-auto"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            class="opacity-25"
+            cx="100"
+            cy="10"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"
+          ></circle>
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path>
+        </svg>
+        <!-- Loading END -->
         <ul class="times__list text-2xl font-bold">
           <li class="flex justify-evenly mb-7">
             <lable for="prayer1">صلاة الصبح: </lable>
@@ -268,15 +295,15 @@
       </main>
     </section>
     <script>
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () =>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () =>
           navigator.serviceWorker
-            .register("./sw.js")
+            .register('./sw.js')
             .then((reg) => reg)
             .catch((err) => console.error(err))
         );
       }
     </script>
-    <script src="./assets/js/app.js"></script>
+    <script src="./assets/js/app.js" type="module"></script>
   </body>
 </html>
